@@ -1,0 +1,160 @@
+/* General Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #f8f9fa;
+  }
+  
+  h3 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #333;
+  }
+  
+  /* Kanban Container */
+  .kanban-container {
+    display: flex;
+    gap: 30px;
+    justify-content: space-around;
+    padding: 20px;
+    flex-wrap: wrap;
+  }
+  
+  /* Kanban Column */
+  .kanban-column {
+    width: 30%;
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    min-height: 400px;
+  }
+  
+  /* Column Title */
+  .kanban-column h4 {
+    font-size: 20px;
+    text-align: center;
+    color: #5a5a5a;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #f1f1f1;
+    padding-bottom: 10px;
+  }
+  
+  /* Order Item Card */
+  .order-item {
+    background-color: #fff;
+    padding: 20px;
+    margin: 15px 0;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    cursor: move;
+  }
+  
+  .order-item img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 15px;
+  }
+  
+  .order-item > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  
+  .order-item-food,
+  .order-item-name,
+  .order-item-address,
+  .order-item-phone {
+    margin: 5px 0;
+    color: #555;
+    font-size: 14px;
+  }
+  
+  .order-item-food {
+    font-weight: bold;
+  }
+  
+  .order-item-name {
+    font-size: 16px;
+    font-weight: 600;
+    color: #333;
+  }
+  
+  .order-item-address p {
+    font-size: 13px;
+    color: #777;
+  }
+  
+  .order-item-phone {
+    font-size: 13px;
+    color: #777;
+  }
+  
+  .order-item .order-details {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 10px;
+  }
+  
+  /* Button and Select */
+  button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    cursor: pointer;
+    border-radius: 6px;
+    font-size: 14px;
+  }
+  
+  button:hover {
+    background-color: #45a049;
+  }
+  
+  select {
+    padding: 6px;
+    border-radius: 6px;
+    border: 1px solid #ddd;
+    font-size: 14px;
+    margin-top: 10px;
+    width: 100%;
+  }
+  
+  select:focus {
+    outline: none;
+    border-color: #4CAF50;
+  }
+  
+  /* Placeholder styles for draggable items */
+  .kanban-column .react-beautiful-dnd-dragging {
+    background-color: rgba(0, 122, 255, 0.1);
+    box-shadow: 0 4px 8px rgba(0, 122, 255, 0.2);
+  }
+  
+  .order-item button {
+    background-color: #007bff;
+  }
+  
+  .order-item button:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Media Queries */
+  @media (max-width: 768px) {
+    .kanban-container {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .kanban-column {
+      width: 80%;
+      margin-bottom: 20px;
+    }
+  }
+  
