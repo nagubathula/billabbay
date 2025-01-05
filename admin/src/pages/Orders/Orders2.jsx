@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
+import './Orders.css';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 import { assets } from './../../../../frontend/src/assets/assets';
 
-const Orders = ({ url }) => {
+const Orders2 = ({ url }) => {
   const [orders, setOrders] = useState([]);
 
   const fetchAllOrders = async () => {
@@ -69,38 +70,34 @@ const Orders = ({ url }) => {
   );
 
   return (
-    <div className="container mx-auto p-6">
-      <h3 className="text-2xl font-bold mb-6">Orders</h3>
+    <div className="order-list">
+      <h3>Orders</h3>
       {Object.keys(groupedOrders).map((status) => (
-        <div key={status} className="mb-8">
-          <h4 className="text-xl font-semibold mb-4">{status}</h4>
+        <div key={status} className="order-group">
+          <h4>{status}</h4>
           {groupedOrders[status].map((order) => (
-            <div key={order._id} className="bg-white shadow-md rounded-lg p-6 mb-4 flex items-center">
-              <img src={assets.parcel_icon} alt="" className="w-12 h-12 mr-4" />
-              <div className="flex-1">
-                <p className="text-lg font-medium">
+            <div key={order._id} className="order-item">
+              <img src={assets.parcel_icon} alt="" />
+              <div>
+                <p className="order-item-food">
                   {order.items.map((item, index) => `${item.name} x ${item.quantity}`).join(', ')}
                 </p>
-                <p className="text-gray-600">{order.address.firstName} {order.address.lastName}</p>
-                <p className="text-gray-500">{order.address.city}, {order.address.state}, {order.address.country}, {order.address.zipcode}</p>
-                <p className="text-gray-500">{order.address.phone}</p>
+                <p className="order-item-name">
+                  {order.address.firstName} {order.address.lastName}
+                </p>
+                <div className="order-item-address">
+                  <p>{order.address.city}, {order.address.state}, {order.address.country}, {order.address.zipcode}</p>
+                </div>
+                <p className="order-item-phone">{order.address.phone}</p>
               </div>
-              <div className="text-right">
-                <p className="text-lg font-semibold">${order.amount}</p>
-                <select 
-                  onChange={(event) => statusHandler(event, order._id)} 
-                  value={order.status} 
-                  className="border rounded p-2 mt-2">
-                  <option value="Food Processing">Food Processing</option>
-                  <option value="Out for delivery">Out for delivery</option>
-                  <option value="Delivered">Delivered</option>
-                </select>
-                <button 
-                  onClick={() => printBill(order)} 
-                  className="bg-blue-500 text-white px-4 py-2 rounded mt-2 hover:bg-blue-600">
-                  Print Bill
-                </button>
-              </div>
+              <p>Items: {order.items.length}</p>
+              <p>${order.amount}</p>
+              <select onChange={(event) => statusHandler(event, order._id)} value={order.status}>
+                <option value="Food Processing">Food Processing</option>
+                <option value="Out for delivery">Out for delivery</option>
+                <option value="Delivered">Delivered</option>
+              </select>
+              <button onClick={() => printBill(order)}>Print Bill</button>
             </div>
           ))}
         </div>
@@ -109,4 +106,4 @@ const Orders = ({ url }) => {
   );
 };
 
-export default Orders;
+export default Orders2;
